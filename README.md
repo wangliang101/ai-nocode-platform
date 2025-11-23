@@ -22,7 +22,26 @@ pnpm install
 npm install
 ```
 
-### 2. Start Development Servers
+### 2. Install Packages for Specific Apps
+
+To add a package to a specific application (e.g., `web` or `api`), use the `--filter` flag:
+
+```bash
+# Add a package to the frontend (web)
+pnpm add <package-name> --filter web
+
+# Add a package to the backend (api)
+pnpm add <package-name> --filter api
+```
+
+Alternatively, you can navigate to the directory:
+
+```bash
+cd apps/web
+pnpm add <package-name>
+```
+
+### 3. Start Development Servers
 
 You can start the services separately:
 
