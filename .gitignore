@@ -1,0 +1,9 @@
+node_modules
+.DS_Store
+dist
+.env
+.nuxt
+.output
+.pnpm-debug.log
+npm-debug.log
+yarn-error.log
