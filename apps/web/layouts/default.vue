@@ -23,9 +23,7 @@
           <button class="text-gray-500">Menu</button>
         </div>
         <div class="flex items-center space-x-4">
-          <button class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
-            New Project
-          </button>
+          <Button variant="outline">New Project</Button>
         </div>
       </header>
       <div class="flex-1 overflow-auto p-6">
