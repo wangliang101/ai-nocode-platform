@@ -6,4 +6,4 @@
 - [x] Migrate Planning Docs to Project <!-- id: 6 -->
 - [x] Configure Shadcn-Vue Component Library <!-- id: 3 -->
 - [x] Set up PostgreSQL (Docker) & Prisma ORM <!-- id: 4 -->
-- [/] Implement Basic Authentication <!-- id: 5 -->
+- [x] Implement Basic Authentication <!-- id: 5 -->

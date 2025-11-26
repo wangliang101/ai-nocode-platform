@@ -41,6 +41,8 @@ Build a "Zero-Code" AI Application Generation Platform that allows users to gene
 *   [ ] Configure Tailwind CSS and Shadcn-Vue.
 *   [ ] Set up PostgreSQL and Prisma connection.
 *   [ ] Implement basic Authentication (e.g., NuxtAuth or custom JWT).
+    *   [ ] **Backend**: Update Prisma Schema (add password), Install Passport/JWT, Create AuthModule.
+    *   [ ] **Frontend**: Create Login/Register pages, Pinia Auth Store.
 
 ### Phase 2: The "Core Engine" (Schema-Driven UI)
 *   [ ] Define the **Application Schema** (JSON structure describing pages, components, and data).
@@ -51,7 +53,7 @@ Build a "Zero-Code" AI Application Generation Platform that allows users to gene
 *   [ ] Implement the AI Service in NestJS.
 *   [ ] Design Prompt Chains: User Request -> LLM -> JSON Schema.
 *   [ ] Implement "Refinement" flow: User asks for changes -> LLM updates Schema -> UI re-renders.
-
+ 
 ### Phase 4: Visual Builder (No-Code Editor)
 *   [ ] Build a Drag-and-Drop interface to manually edit the generated schema.
 *   [ ] Property editors (sidebar to change colors, text, logic).
