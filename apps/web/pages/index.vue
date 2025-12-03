@@ -1,6 +1,22 @@
+<script setup lang="ts">
+import { useAuthStore } from '~/stores/auth'
+
+definePageMeta({
+  middleware: 'auth'
+})
+
+const authStore = useAuthStore()
+</script>
+
 <template>
   <div>
-    <h2 class="text-2xl font-semibold text-gray-800 mb-6">Dashboard</h2>
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-2xl font-semibold text-gray-800">Dashboard</h2>
+      <div class="flex items-center gap-4">
+        <span class="text-gray-600">{{ authStore.user?.email }}</span>
+        <Button @click="authStore.logout()" variant="outline">Logout</Button>
+      </div>
+    </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <!-- Project Card Placeholder -->
       <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">

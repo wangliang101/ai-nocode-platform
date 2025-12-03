@@ -1,13 +1,6 @@
-<template>
-  <button
-    :class="cn(buttonVariants({ variant, size }), props.class)"
-    v-bind="$attrs"
-  >
-    <slot />
-  </button>
-</template>
-
 <script setup lang="ts">
+import { type HTMLAttributes, computed } from 'vue'
+import { Primitive, type PrimitiveProps } from 'radix-vue'
 import { type VariantProps, cva } from 'class-variance-authority'
 import { cn } from '@/lib/utils'
 
@@ -40,13 +33,28 @@ const buttonVariants = cva(
   },
 )
 
-interface Props {
-  variant?: NonNullable<Parameters<typeof buttonVariants>[0]>['variant']
-  size?: NonNullable<Parameters<typeof buttonVariants>[0]>['size']
-  class?: string
+export interface ButtonProps extends PrimitiveProps {
+  variant?: VariantProps<typeof buttonVariants>['variant']
+  size?: VariantProps<typeof buttonVariants>['size']
+  class?: HTMLAttributes['class']
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  class: '',
+const props = withDefaults(defineProps<ButtonProps>(), {
+  as: 'button',
+})
+
+const delegatedProps = computed(() => {
+  const { class: _, ...delegated } = props
+
+  return delegated
 })
 </script>
+
+<template>
+  <Primitive
+    v-bind="delegatedProps"
+    :class="cn(buttonVariants({ variant, size }), props.class)"
+  >
+    <slot />
+  </Primitive>
+</template>

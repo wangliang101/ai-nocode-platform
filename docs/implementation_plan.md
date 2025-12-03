@@ -36,13 +36,13 @@ Build a "Zero-Code" AI Application Generation Platform that allows users to gene
 ## Development Plan
 
 ### Phase 1: Foundation & Architecture (Current Focus)
-*   [ ] Initialize Monorepo structure (Web + API).
-*   [ ] Set up Nuxt 3 and NestJS projects.
-*   [ ] Configure Tailwind CSS and Shadcn-Vue.
-*   [ ] Set up PostgreSQL and Prisma connection.
-*   [ ] Implement basic Authentication (e.g., NuxtAuth or custom JWT).
-    *   [ ] **Backend**: Update Prisma Schema (add password), Install Passport/JWT, Create AuthModule.
-    *   [ ] **Frontend**: Create Login/Register pages, Pinia Auth Store.
+*   [x] Initialize Monorepo structure (Web + API).
+*   [x] Set up Nuxt 3 and NestJS projects.
+*   [x] Configure Tailwind CSS and Shadcn-Vue.
+*   [x] Set up PostgreSQL and Prisma connection.
+*   [x] Implement basic Authentication (e.g., NuxtAuth or custom JWT).
+    *   [x] **Backend**: Update Prisma Schema (add password), Install Passport/JWT, Create AuthModule.
+    *   [x] **Frontend**: Create Login/Register pages, Pinia Auth Store.
 
 ### Phase 2: The "Core Engine" (Schema-Driven UI)
 *   [ ] Define the **Application Schema** (JSON structure describing pages, components, and data).
