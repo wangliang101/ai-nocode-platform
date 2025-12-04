@@ -7,9 +7,17 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt'],
   css: ['~/assets/css/main.css'],
   alias: {
+    '@': './',
     'components': '~/components',
     'utils': '~/lib/utils',
   },
+  components: [
+    {
+      path: '~/components',
+      extensions: ['.vue'],
+      pathPrefix: false,
+    },
+  ],
   runtimeConfig: {
     public: {
       apiBaseUrl: process.env.NUXT_PUBLIC_API_BASE_URL || 'http://localhost:3000',
