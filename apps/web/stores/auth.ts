@@ -11,6 +11,16 @@ interface AuthState {
   token: string | null
 }
 
+interface LoginResponse {
+  access_token: string
+  user?: User
+}
+
+interface RegisterResponse {
+  id: number
+  email: string
+}
+
 export const useAuthStore = defineStore('auth', {
   state: (): AuthState => ({
     user: null,
@@ -20,53 +30,47 @@ export const useAuthStore = defineStore('auth', {
     async login(email: string, pass: string) {
       const config = useRuntimeConfig()
       try {
-        const { data, error } = await useFetch(`${config.public.apiBaseUrl}/auth/login`, {
+        const response = await $fetch<LoginResponse>(`${config.public.apiBaseUrl}/auth/login`, {
           method: 'POST',
           body: { email, password: pass },
         })
 
-        if (error.value) {
-          throw new Error(error.value.message || 'Login failed')
-        }
-
-        if (data.value) {
-          const response = data.value as any
+        if (response && response.access_token) {
           this.token = response.access_token
           const tokenCookie = useCookie('token')
           tokenCookie.value = response.access_token
           
-          // In a real app, you might want to fetch user details here
-          // For now, we'll just set the email
-          this.user = { id: 0, email } 
+          // Set user data from response or create from email
+          this.user = response.user || { id: 0, email }
           return true
         }
-      } catch (err) {
+        return false
+      } catch (err: any) {
         console.error('Login error:', err)
-        throw err
+        // Parse error message from API response
+        const errorMessage = err?.data?.message || err?.message || 'Login failed. Please check your credentials.'
+        throw new Error(errorMessage)
       }
-      return false
     },
 
     async register(email: string, pass: string) {
       const config = useRuntimeConfig()
       try {
-        const { data, error } = await useFetch(`${config.public.apiBaseUrl}/auth/register`, {
+        const response = await $fetch<RegisterResponse>(`${config.public.apiBaseUrl}/auth/register`, {
           method: 'POST',
           body: { email, password: pass },
         })
 
-        if (error.value) {
-          throw new Error(error.value.message || 'Registration failed')
-        }
-
-        if (data.value) {
+        if (response && response.id) {
           return true
         }
-      } catch (err) {
+        return false
+      } catch (err: any) {
         console.error('Registration error:', err)
-        throw err
+        // Parse error message from API response
+        const errorMessage = err?.data?.message || err?.message || 'Registration failed. Please try again.'
+        throw new Error(errorMessage)
       }
-      return false
     },
 
     logout() {
